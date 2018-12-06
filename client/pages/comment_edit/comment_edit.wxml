@@ -1,0 +1,39 @@
+<!--client/pages/comment_edit/comment_edit.wxml-->
+<view class='container'>
+  <view class='detail-card-wrapper'>
+    <view class='view-wrapper'>
+      <image class='detail-img' src="/images/p1461851991.jpg"></image>
+    </view>
+    <view class='card-text-wrapper'>
+      <view class='card-title h1'>
+        机器人总动员
+      </view>
+      <view class='comment-wrapper'>
+        <!-- <image class='avatar' src='/images/avatar1.jpg'></image> -->
+        <!-- <view class='name'>倔强的二文鱼的影评</view> -->
+      </view>
+      <!-- <view class='card-desc h2'>
+
+      </view> -->
+      <textarea class="detailText"placeholder-style='h2'  placeholder="输入你的影评">
+      </textarea>
+    </view>
+
+    <view class='button-wrapper'>
+      <navigator class='button-with-icon' url="/pages/movie-list/movie-list">
+        <!-- <image src="/images/zan.png"></image> -->
+        <text>录音</text>
+      </navigator>
+
+
+    </view>
+  </view>
+
+</view>
+
+<view class='button-wrapper-bottom'>
+  <navigator class='button-with-icon-bottom' url="/pages/movie-list/movie-list">
+    <text>完 成</text>
+  </navigator>
+
+</view>

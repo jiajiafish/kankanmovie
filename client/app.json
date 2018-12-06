@@ -1,13 +1,20 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/addCgi/addCgi"
+    "pages/addCgi/addCgi",
+    "pages/hot/hot",
+    "pages/detail/detail",
+    "pages/comment_list/comment_list",
+    "pages/comment_detail/comment_detail",
+    "pages/comment_edit/comment_edit",
+    "pages/comment_preview/comment_preview",
+    "pages/user/user"
   ],
-  "window":{
-    "backgroundColor":"#F6F6F6",
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "Wafer Quick Start",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "侃侃看看电影",
+    "navigationBarTextStyle": "black"
   }
 }

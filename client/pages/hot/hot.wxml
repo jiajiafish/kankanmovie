@@ -1,0 +1,39 @@
+<!--client/pages/hot/hot.wxml-->
+<view class='container'>
+
+  <view class='hot-card-wrapper'>
+    <image src="/images/p1461851991.jpg"></image>
+    <view class='card-text-wrapper'>
+      <view class='card-title h1'>
+        机器人总动员
+      </view>
+      <view class='card-p h2'>
+        爱情 / 科幻 / 动画 / 冒险
+      </view>
+    </view>
+  </view>
+  <view class='hot-card-wrapper'>
+    <image src="/images/p1606727862.jpg"></image>
+    <view class='card-text-wrapper'>
+      <view class='card-title h1'>
+        千与千寻
+      </view>
+      <view class='card-p'>
+        剧情 / 动画 / 奇幻
+      </view>
+    </view>
+  </view>
+
+  <view class='hot-card-wrapper'>
+    <image src="/images/p579729551.jpg"></image>
+    <view class='card-text-wrapper'>
+      <view class='card-title h1'>
+        三傻大闹宝莱坞
+      </view>
+      <view class='card-p'>
+        剧情 / 喜剧 / 爱情 / 歌舞
+      </view>
+    </view>
+  </view>
+
+</view>

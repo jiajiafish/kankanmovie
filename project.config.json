@@ -8,5 +8,68 @@
 	},
 	"appid": "wxa62595205027f2d4",
 	"projectname": "kankanmovie",
-	"condition": {}
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 6,
+			"list": [
+				{
+					"id": -1,
+					"name": "热门电影页",
+					"pathName": "pages/hot/hot",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "电影详情页",
+					"pathName": "pages/detail/detail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "影评列表页",
+					"pathName": "pages/comment_list/comment_list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "影评详情页",
+					"pathName": "pages/comment_detail/comment_detail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "影评编辑页",
+					"pathName": "pages/comment_edit/comment_edit",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "影评预览页",
+					"pathName": "pages/comment_preview/comment_preview",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "个人中心页",
+					"pathName": "pages/user/user",
+					"query": ""
+				}
+			]
+		}
+	}
 }

@@ -1,0 +1,35 @@
+<!--client/pages/comment_preview/comment_preview.wxml-->
+<view class='container'>
+  <view class='detail-card-wrapper'>
+    <view class='view-wrapper'>
+      <image class='detail-img' src="/images/p1461851991.jpg"></image>
+    </view>
+    <view class='card-text-wrapper'>
+      <view class='card-title h1'>
+        机器人总动员
+      </view>
+        <view class='comment-wrapper'>
+    <image class='avatar' src='/images/avatar1.jpg'></image>
+    <view class='name'>倔强的二文鱼的影评</view>
+  </view>
+      <view class='comment-content-wrapper'>
+      <view class='comment-blank'>
+      <image src='/images/yinhao.png'></image>
+      </view>
+      <view class='comment-contents h2'>李将会成为乔伊的儿子帕特里克（卢卡斯·赫奇斯 Lucas Hedg es 饰）的监护人，李打算将帕特里克带回波士顿，但很显然帕特里克并不愿意离开家乡和朋友们，但李亦不愿在这片伤心地久留。原来，曼彻斯特埋藏着李的一段绝望的回忆，他的过失使得两个女儿葬身火海，妻子兰迪（米歇尔·威廉姆斯 Michelle Williams 饰）</view>
+      </view>
+    </view>
+
+    <view class='button-wrapper'>
+      <navigator class='button-with-icon' url="/pages/movie-list/movie-list">
+        <!-- <image src="/images/zan.png"></image> -->
+        <text>重新编辑</text>
+      </navigator>
+      <navigator class='button-with-icon' url="/pages/user/user">
+        <!-- <image src="/images/me.png">
+        </image> -->
+        <text>发布影评</text>
+      </navigator>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,33 @@
+/* client/pages/hot/hot.wxss */
+
+page {
+  background: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.hot-card-wrapper{
+  margin: 50rpx 0rpx;
+  height: 288rpx;
+  display: flex;
+  box-shadow: 0 2rpx 13rpx 5rpx rgba(0, 0, 0, 0.02);
+  border: solid 1px rgba(0, 0, 0, 0.1);
+
+}
+.hot-card-wrapper image{
+  width: 194rpx;
+  height: 288rpx
+}
+.card-text-wrapper{
+  margin: 50rpx 50rpx;
+}
+.card-title{
+  font-size: 35rpx;
+  font-weight: bold;
+}
+.card-p{
+  margin-top: 50rpx;
+  font-size: 25rpx;
+  color: #777;
+}
