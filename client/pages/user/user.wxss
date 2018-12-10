@@ -7,7 +7,9 @@
   background-color: #fff;
   margin-bottom: 30rpx;
 }
-
+.comment-card:last-child{
+  margin-bottom: 120rpx;
+}
 .comment-wrapper{
   margin-top: 30rpx;
   display: flex;
@@ -32,6 +34,8 @@
   display: flex;
 
 }
+
+
 .comment-card .left-pic{
 height: 300rpx;
 width: 230rpx;
@@ -60,6 +64,7 @@ width: 230rpx;
   box-shadow: 0 2rpx 13rpx 5rpx rgba(0, 0, 0, 0.03);
 
 }
+
 
 
 .button-with-icon-bottom{

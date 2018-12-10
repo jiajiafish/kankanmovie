@@ -3,7 +3,7 @@
  */
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
-var host = 'https://123456.qcloud.la';
+var host = 'https://bsfs9n5c.qcloud.la';
 
 var config = {
 
@@ -21,7 +21,13 @@ var config = {
         tunnelUrl: `${host}/weapp/tunnel`,
 
         // 上传图片接口
-        uploadUrl: `${host}/weapp/upload`
+        uploadUrl: `${host}/weapp/upload`,
+
+        // 获取到所有热门电影的信息
+        gethotlist : `${host}/weapp/movies`,
+
+        // 获取到指定ID的热门电影的信息
+      getTheHotMovie: `${host}/weapp/movies/`,
     }
 };
 

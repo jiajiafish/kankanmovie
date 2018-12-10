@@ -32,4 +32,9 @@ router.get('/message', controllers.message.get)
 // POST 用来处理微信转发过来的客服消息
 router.post('/message', controllers.message.post)
 
+
+// 获得所有的热门电影
+router.get('/movies', controllers.movie.list)
+// 获取指定的热门电影
+router.get('/movies/:id', controllers.movie.detail)
 module.exports = router
