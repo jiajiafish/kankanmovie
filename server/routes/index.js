@@ -37,4 +37,9 @@ router.post('/message', controllers.message.post)
 router.get('/movies', controllers.movie.list)
 // 获取指定的热门电影
 router.get('/movies/:id', controllers.movie.detail)
+// 获得所有的指定movieId的comment
+router.get('/comments/:movieId', controllers.comment.list)
+// 获取指定commentid的comment
+router.get('/comment/:commentId', controllers.comment.detail)
+
 module.exports = router

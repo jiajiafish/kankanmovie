@@ -49,6 +49,9 @@
   width: 30rpx;
   height: 30rpx;
 }
+.detailText{
+  width: 500rpx;
+}
 
 .button-wrapper text {
   font-size: 30rpx;
@@ -97,4 +100,14 @@
 .button-with-icon-bottom{
   margin:20rpx auto; 
   color: #aaffa9
+}
+
+
+.login-button{
+  margin-top: 100rpx;
+}
+.login-avatar{
+  height: 650rpx;
+  width: 650rpx;
+
 }

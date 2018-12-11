@@ -30,3 +30,12 @@ page {
 .avatar {
   border-radius: 50%;
 }
+
+.login-button{
+  margin-top: 100rpx;
+}
+.login-avatar{
+  height: 650rpx;
+  width: 650rpx;
+
+}

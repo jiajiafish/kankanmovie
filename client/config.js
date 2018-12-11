@@ -28,6 +28,12 @@ var config = {
 
         // 获取到指定ID的热门电影的信息
       getTheHotMovie: `${host}/weapp/movies/`,
+
+      // 获取movieId电影的评论
+      getCommentList: `${host}/weapp/comments/`,
+      // 获取特定评论Id的评论
+
+      getTheComment: `${host}/weapp/comment/`,
     }
 };
 

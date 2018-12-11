@@ -1,29 +1,11 @@
 <!--client/pages/comment_list/comment_list.wxml-->
-<view class='comment-card'>
+<view class='comment-card' data-dest="{{item.id}}" bindtap='onTapComment'  wx:for='{{comments}}' wx:for-item="item">
   <view class='comment-wrapper'>
-    <image class='avatar' src='/images/avatar1.jpg'></image>
-    <view class='name'>倔强的二文鱼</view>
+    <image class='avatar' src='{{item.avatar}}'></image>
+    <view class='name'>{{item.username}}</view>
   </view>
   <view class='comment h2'>
-    这电影真的是太牛逼了，服了
+    {{item.content}}
   </view>
 </view>
 
-<view class='comment-card'>
-  <view class='comment-wrapper'>
-    <image class='avatar' src='/images/avatar2.jpg'></image>
-    <view class='name'>佳佳</view>
-  </view>
-  <view class='comment h2'>
-    这电影真的是太牛逼了，服了
-  </view>
-</view>
-<view class='comment-card'>
-  <view class='comment-wrapper'>
-    <image class='avatar' src='/images/avatar3.jpg'></image>
-    <view class='name'>泛亚汽车</view>
-  </view>
-  <view class='comment h2'>
-    这电影真的是太牛逼了，服了
-  </view>
-</view>

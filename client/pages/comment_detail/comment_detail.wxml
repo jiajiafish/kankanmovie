@@ -2,31 +2,28 @@
 <view class='container'>
   <view class='detail-card-wrapper'>
     <view class='view-wrapper'>
-      <image class='detail-img' src="/images/p1461851991.jpg"></image>
+      <image class='detail-img' src="{{comment.image}}"></image>
     </view>
     <view class='card-text-wrapper'>
       <view class='card-title h1'>
-        机器人总动员
+        {{comment.title}}
       </view>
-        <view class='comment-wrapper'>
-    <image class='avatar' src='/images/avatar1.jpg'></image>
-    <view class='name'>倔强的二文鱼的影评</view>
-  </view>
+      <view class='comment-wrapper'>
+        <image class='avatar' src='{{comment.avatar}}'></image>
+        <view class='name'>{{comment.username}}的影评</view>
+      </view>
       <view class='card-desc h2'>
-公元2805年，人类文明高度发展，却因污染和生活垃圾大量增加使得地球不再适于人类居住。地球人被迫乘坐飞船离开故乡，进行一次漫长无边的宇宙之旅。
+        {{comment.content}}
       </view>
     </view>
 
     <view class='button-wrapper'>
-      <navigator class='button-with-icon' url="/pages/movie-list/movie-list">
-        <!-- <image src="/images/zan.png"></image> -->
+      <view class='button-with-icon' bindtap='onTapFav' data-dest="{{comment.id}}" >
         <text>收藏影评</text>
-      </navigator>
-      <navigator class='button-with-icon' url="/pages/user/user">
-        <!-- <image src="/images/me.png">
-        </image> -->
+      </view>
+      <view class='button-with-icon' bindtap='onTapComment' data-dest="{{comment.movie_id}}" >
         <text>写影评</text>
-      </navigator>
+      </view>
     </view>
   </view>
 </view>

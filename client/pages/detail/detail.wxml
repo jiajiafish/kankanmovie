@@ -1,5 +1,11 @@
-<!--client/pages/detail/detail.wxml-->
-<view class='container'>
+<view class='container' wx:if="{{!userInfo}}">
+  <image class='avatar login-avatar' src='/images/wenhao.jpg'></image>
+  <view class='login-button'>
+    <button wx:if="{{locationAuthType==0}}" open-type='getUserInfo' bindgetuserinfo='onTapLogin'>微信登录</button>
+    <button wx:if="{{locationAuthType==1}}" open-type='openSetting' bindopensetting="onTapLogin">授权登录</button>
+  </view>
+</view>
+<view class='container' wx:else>
   <view class='detail-card-wrapper'>
     <view class='view-wrapper'>
       <image class='detail-img' src="{{movie.image}}"></image>
@@ -9,16 +15,14 @@
         {{movie.title}}
       </view>
       <view class='card-desc h2'>
-{{movie.description}}
+        {{movie.description}}
       </view>
     </view>
-
     <view class='button-wrapper'>
-      <navigator class='button-with-icon' url="/pages/movie-list/movie-list">
+      <navigator class='button-with-icon' url="/pages/comment_list/comment_list?dest={{movie.id}}">
         <text>查看影评</text>
       </navigator>
-      <navigator class='button-with-icon' url="/pages/user/user">
-
+      <navigator class='button-with-icon' url="/pages/comment_edit/comment_edit?dest={{movie.id}}">
         <text>添加影评</text>
       </navigator>
     </view>
