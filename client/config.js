@@ -38,7 +38,7 @@ var config = {
     addComment: `${host}/weapp/addcomment`,
 
     rand: `${host}/weapp/rand`,
-
+    addFav: `${host}/weapp/addcfav`,
     mycom: `${host}/weapp/mycom`,
     myfav: `${host}/weapp/myfav`,
 

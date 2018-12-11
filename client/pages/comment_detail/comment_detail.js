@@ -114,12 +114,41 @@ Page({
     })
   },
   onTapFav: function (event) {
-    console.log(event.currentTarget.dataset.commentId)
-    let commentId = event.currentTarget.dataset.commentId
+    console.log(event.currentTarget.dataset.commentid)
+    var commentId = event.currentTarget.dataset.commentid
+    console.log("*************************")
+
+    console.log(commentId)
+    console.log("*************************")
     // 这个需要发个post到后台
-    wx.navigateTo({
-      url: '/pages/comment_edit/comment_edit?dest=' + commentId,
+    qcloud.request({
+      url: config.service.addFav,
+      method: 'POST',
+      login: true,
+      data: {
+        id: commentId
+      },
+      success: result => {
+        wx.hideLoading()
+        console.log(result)
+        let data = result.data
+      
+          wx.showToast({
+            icon: 'none',
+            title: '收藏影评成功'
+          })
+
+      },
+      fail: result => {
+        wx.hideLoading()
+        console.log(result)
+        wx.showToast({
+          icon: 'none',
+          title: '添加评论失败'
+        })
+      }
     })
+
 
   },
 })

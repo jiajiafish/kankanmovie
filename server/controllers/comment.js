@@ -13,7 +13,7 @@ module.exports = {
     // 获取某个电影的评论的详情
     commentID = +ctx.params.commentId
     if (!isNaN(commentID)) {
-      ctx.state.data = (await DB.query("SELECT * FROM movie_comment LEFT JOIN movies ON movie_comment.movie_id = movies.id WHERE movie_comment.id =?", [commentID]))[0]
+      ctx.state.data = (await DB.query("SELECT co.id,co.movie_id,co.content,co.avatar,mo.title,mo.image,co.username,co.comment_type,co.user,mo.description  FROM movie_comment AS co  LEFT JOIN movies as mo ON co.movie_id = mo.id WHERE co.id =?", [commentID]))[0]
     } else {
       ctx.state.data = {}
     }
@@ -33,12 +33,12 @@ module.exports = {
   mycom: async ctx => {
     let user = ctx.state.$wxInfo.userinfo.openId
     // content 可以是字符也有可能是存储播放音频 type0代表字符，type1代表音频的地址
-    ctx.state.data = await DB.query('SELECT * FROM `movie_comment` left JOIN movies ON movie_comment.movie_id = movies.id WHERE user=?', [user])
+    ctx.state.data = await DB.query('SELECT co.id, co.avatar, co.username, co.content, mo.title, mo.image FROM `movie_comment` AS co LEFT JOIN `movies` as mo ON co.movie_id = mo.id WHERE co.user = ?', [user])
   },
   myfav: async ctx => {
     let user = ctx.state.$wxInfo.userinfo.openId
     // content 可以是字符也有可能是存储播放音频 type0代表字符，type1代表音频的地址
-    ctx.state.data = await DB.query('SELECT * FROM `movie_comment` left JOIN movies ON movie_comment.movie_id = movies.id WHERE user=?', [user])
+    ctx.state.data = await DB.query('SELECT co.id, co.avatar, co.username, co.content, mo.title, mo.image FROM`movie_comment` as co left join`movies` as mo on co.movie_id = mo.id left join`comment_fave` as fa on fa.comment_id = co.id where fa.open_id = ?', [user])
   },
   fav: async ctx => {
     let user = ctx.state.$wxInfo.userinfo.openId
@@ -49,3 +49,4 @@ module.exports = {
     }
   }
 }
+

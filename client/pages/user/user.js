@@ -17,6 +17,7 @@ Page({
    */
   onLoad: function (options) {
     this.getComList()
+    this.getFavList()
   },
 
   /**
@@ -38,6 +39,36 @@ Page({
         if (!response.data.code) {
           this.setData({
             myCom: response.data.data
+          })
+        } else {
+          wx.showToast({
+            title: '电影数据加载失败',
+          })
+        }
+
+      },
+      fail: function (err) {
+        wx.hideLoading()
+        wx.showToast({
+          title: '电影数据加载失败',
+        })
+      }
+    });
+  },
+
+  getFavList() {
+    wx.showLoading({
+      title: '个人数据加载中。。。',
+    })
+    qcloud.request({
+      url: 'https://bsfs9n5c.qcloud.la/weapp/myfav',
+      login: true,
+      success: response => {
+        wx.hideLoading()
+        console.log(response.data.data)
+        if (!response.data.code) {
+          this.setData({
+            myFav: response.data.data
           })
         } else {
           wx.showToast({
