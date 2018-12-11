@@ -41,5 +41,14 @@ router.get('/movies/:id', controllers.movie.detail)
 router.get('/comments/:movieId', controllers.comment.list)
 // 获取指定commentid的comment
 router.get('/comment/:commentId', controllers.comment.detail)
+// 添加comment
+router.post('/addcomment', validationMiddleware, controllers.comment.add)
+// 添加收藏
+router.post('/addcfav',validationMiddleware, controllers.comment.fav)
+// 随机抽取一个评论
+router.get('/rand', controllers.comment.rand)
+
+router.get('/mycom', validationMiddleware, controllers.comment.mycom)
+router.get('/myfav', validationMiddleware, controllers.comment.myfav)
 
 module.exports = router

@@ -1,4 +1,3 @@
-// client/pages/comment_detail/comment_detail.js
 const qcloud = require('../../vendor/wafer2-client-sdk/index')
 const config = require('../../config')
 const app = getApp()
@@ -8,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    userInfo: null,
+    locationAuthType: app.data.locationAuthType,
   },
 
   /**
@@ -97,19 +97,29 @@ Page({
     })
 
   },
-  onTapComment: function (event) {
+  onTapAction: function (event) {
     console.log(event.currentTarget.dataset.dest)
     let dest = event.currentTarget.dataset.dest
-    wx.navigateTo({
-      url: '/pages/comment_edit/comment_edit?dest=' + dest,
+    wx.showActionSheet({
+      itemList: ['文字', '音频'],
+      success(res) {
+        console.log(res.tapIndex)
+        wx.navigateTo({
+          url: '/pages/comment_edit/comment_edit?dest=' + dest + "&type=" + res.tapIndex,
+        })
+      },
+      fail(res) {
+        console.log(res.errMsg)
+      }
     })
   },
   onTapFav: function (event) {
-    console.log(event.currentTarget.dataset.dest)
-    let dest = event.currentTarget.dataset.dest
+    console.log(event.currentTarget.dataset.commentId)
+    let commentId = event.currentTarget.dataset.commentId
     // 这个需要发个post到后台
     wx.navigateTo({
-      url: '/pages/comment_edit/comment_edit?dest=' + dest,
+      url: '/pages/comment_edit/comment_edit?dest=' + commentId,
     })
+
   },
 })

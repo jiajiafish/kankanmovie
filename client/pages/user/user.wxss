@@ -71,3 +71,12 @@ width: 230rpx;
   margin:20rpx auto; 
   color: #777777
 }
+
+.login-button{
+  margin-top: 100rpx;
+}
+.login-avatar{
+  height: 650rpx;
+  width: 650rpx;
+
+}

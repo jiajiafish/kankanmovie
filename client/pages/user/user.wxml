@@ -1,5 +1,5 @@
 <!--client/pages/user/user.wxml-->
-<view class='container' wx:if="{{!locationAuthType==2}}">
+<view class='container' wx:if="{{!userInfo}}">
 
   <image class='avatar login-avatar' src='/images/wenhao.jpg'></image>
   <view class='login-button'>
@@ -8,7 +8,7 @@
   </view>
 
 </view>
-<view class='container'  wx:else>
+<view class='container' wx:else>
   <view class='shoucang'>收藏的影评</view>
 
   <view class='comment-card'>
@@ -42,43 +42,29 @@
 
     </view>
   </view>
- <view class='shoucang'>发布的影评</view>
-  <view class='comment-card'>
+  <view class='shoucang' >发布的影评</view>
+  <view class='comment-card' wx:for='{{myCom}}'  wx:for-item="item">
     <view class='comment-left'></view>
-    <image class='left-pic' src='/images/p1606727862.jpg'></image>
+    <image class='left-pic' src='{{item.image}}'></image>
     <view class='comment-right'>
-      <view class='commen-title h1'>千与千寻</view>
+      <view class='commen-title h1'>{{item.title}}</view>
       <view class='comment h2'>
-        这电影真的是太牛逼了，服了这电影真的是太牛逼了。
+        {{item.content}}
       </view>
       <view class='comment-wrapper'>
         <image class='avatar' src='/images/avatar1.jpg'></image>
-        <view class='name'>倔强的二文鱼</view>
+        <view class='name'>{{item.username}}</view>
       </view>
 
     </view>
   </view>
 
-  <view class='comment-card'>
-    <view class='comment-left'></view>
-    <image class='left-pic' src='/images/p1606727862.jpg'></image>
-    <view class='comment-right'>
-      <view class='commen-title h1'>千与千寻</view>
-      <view class='comment h2'>
-        这电影真的是太牛逼了，服了这电影真的是太牛逼了。
-      </view>
-      <view class='comment-wrapper'>
-        <image class='avatar' src='/images/avatar1.jpg'></image>
-        <view class='name'>倔强的二文鱼</view>
-      </view>
 
-    </view>
-  </view>
 
 </view>
 
 <view class='button-wrapper-bottom'>
-  <navigator class='button-with-icon-bottom' url="/pages/movie-list/movie-list">
+  <navigator class='button-with-icon-bottom' url="/pages/index/index">
     <text>回到首页</text>
   </navigator>
 

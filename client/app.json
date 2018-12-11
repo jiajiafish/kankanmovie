@@ -9,6 +9,7 @@
     "pages/comment_edit/comment_edit",
     "pages/comment_preview/comment_preview",
     "pages/user/user"
+
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

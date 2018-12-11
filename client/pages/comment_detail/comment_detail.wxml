@@ -18,10 +18,10 @@
     </view>
 
     <view class='button-wrapper'>
-      <view class='button-with-icon' bindtap='onTapFav' data-dest="{{comment.id}}" >
+      <view class='button-with-icon' bindtap='onTapFav' data-commentId="{{comment.id}}" >
         <text>收藏影评</text>
       </view>
-      <view class='button-with-icon' bindtap='onTapComment' data-dest="{{comment.movie_id}}" >
+      <view class='button-with-icon' bindtap='onTapAction' data-dest="{{comment.movie_id}}" >
         <text>写影评</text>
       </view>
     </view>

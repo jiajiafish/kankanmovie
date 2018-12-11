@@ -18,6 +18,9 @@ Page({
   onLoad: function (options) {
 
     this.getMovie(options.dest)
+    this.setData({
+      movieId: options.dest
+    })
   },
 
   getMovie(id) {
@@ -117,7 +120,24 @@ Page({
   onReachBottom: function () {
 
   },
-
+  onTapAction:function(event){
+    console.log(event.currentTarget.dataset.dest)
+    let dest = event.currentTarget.dataset.dest
+    wx.showActionSheet({
+      itemList: ['文字', '音频'],
+      success(res) {
+        console.log(res.tapIndex)
+        // 这个需要发个post到后台
+        wx.navigateTo({
+          url: '/pages/comment_edit/comment_edit?dest=' + dest + "&type=" + res.tapIndex,
+        })
+      },
+      fail(res) {
+        console.log(res.errMsg)
+      }
+    })
+  },
+  
   /**
    * 用户点击右上角分享
    */

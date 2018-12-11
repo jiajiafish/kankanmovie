@@ -6,39 +6,74 @@
     <button wx:if="{{locationAuthType==1}}" open-type='openSetting' bindopensetting="onTapLogin">授权登录</button>
   </view>
 </view>
-<view class='container' wx:else>
-  <view class='detail-card-wrapper'>
-    <view class='view-wrapper'>
-      <image class='detail-img' src="{{movie.image}}"></image>
-    </view>
-    <view class='card-text-wrapper'>
-      <view class='card-title h1'>
-        {{movie.title}}
+<view wx:else>
+  <view class='container' wx:if="{{!preview}}">
+    <view class='detail-card-wrapper'>
+      <view class='view-wrapper'>
+        <image class='detail-img' src="{{movie.image}}"></image>
       </view>
-      <view class='comment-wrapper'>
-        <!-- <image class='avatar' src='/images/avatar1.jpg'></image> -->
-        <!-- <view class='name'>倔强的二文鱼的影评</view> -->
-      </view>
-      <!-- <view class='card-desc h2'>
+      <view class='card-text-wrapper'>
+        <view class='card-title h1'>
+          {{movie.title}}
+        </view>
+        <view class='comment-wrapper'>
+          <!-- <image class='avatar' src='/images/avatar1.jpg'></image> -->
+          <!-- <view class='name'>倔强的二文鱼的影评</view> -->
+        </view>
+        <!-- <view class='card-desc h2'>
 
       </view> -->
-      <textarea class="detailText" placeholder-style='h2'  placeholder="输入你的影评">
-      </textarea>
+        <textarea wx:if="{{commentType==0}}" class="detailText" placeholder-style='h2' bindinput='onInputValue' placeholder="输入你的影评">
+        </textarea>
+      </view>
+
+      <view class='button-wrapper' wx:if="{{commentType==1}}">
+        <navigator class='button-with-icon' url="/pages/movie-list/movie-list">
+          <!-- <image src="/images/zan.png"></image> -->
+          <text>录音</text>
+        </navigator>
+
+
+      </view>
     </view>
-
-    <view class='button-wrapper'>
-      <navigator class='button-with-icon' url="/pages/movie-list/movie-list">
-        <!-- <image src="/images/zan.png"></image> -->
-        <text>录音</text>
-      </navigator>
-
-
+    <view class='button-wrapper-bottom' bindtap='onTapPreview'>
+      <view class='button-with-icon-bottom' url="/pages/movie-list/movie-list">
+        <text>完 成</text>
+      </view>
     </view>
   </view>
-<view class='button-wrapper-bottom' bindtap='onUserInfo'>
-  <view class='button-with-icon-bottom' url="/pages/movie-list/movie-list">
-    <text>完 成</text>
+  <view class='container' wx:else>
+    <view class='detail-card-wrapper'>
+      <view class='view-wrapper'>
+        <image class='detail-img' src="{{movie.image}}"></image>
+      </view>
+      <view class='card-text-wrapper'>
+        <view class='card-title h1'>
+          {{movie.title}}
+        </view>
+        <view class='comment-wrapper'>
+          <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
+          <view class='name'>{{userInfo.nickName}}的影评</view>
+        </view>
+        <view class='comment-content-wrapper'>
+          <view class='comment-blank'>
+            <image src='/images/yinhao.png'></image>
+          </view>
+          <view class='comment-contents h2'>{{commentValue}}</view>
+        </view>
+      </view>
+
+      <view class='button-wrapper' >
+        <view class='button-with-icon' bindtap='onBackEdit'>
+          <!-- <image src="/images/zan.png"></image> -->
+          <text>重新编辑</text>
+        </view>
+        <view class='button-with-icon' bindtap='onTapSubmit' data-dest="{{movie.id}}">
+          <!-- <image src="/images/me.png">
+        </image> -->
+          <text>发布影评</text>
+        </view>
+      </view>
+    </view>
   </view>
 </view>
-</view>
-

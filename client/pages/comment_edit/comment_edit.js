@@ -9,7 +9,10 @@ Page({
    */
   data: {
     userInfo: null,
-    locationAuthType: app.data.locationAuthType
+    locationAuthType: app.data.locationAuthType,
+    commentValue : "",
+    preview: 0,
+
   },
   onUserInfo:function(){
     console.log(this.data.userInfo)
@@ -20,8 +23,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getMovie(options.dest)
 
+    this.getMovie(options.dest)
+    this.setData({
+      movieId: options.dest,
+      commentType: options.type
+    })
   },
 
   /**
@@ -35,7 +42,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // 同步授权状态
+    this.setData({
+      locationAuthType: app.data.locationAuthType
+    })
+    app.checkSession({
+      success: ({ userInfo }) => {
+        console.log(userInfo)
+        this.setData({
+          userInfo
+        })
+      }
+    })
   },
 
   /**
@@ -49,7 +67,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    
   },
 
   /**
@@ -117,4 +135,62 @@ Page({
       }
     })
   },
+  onTapPreview(){
+    this.setData({
+      preview:1
+    })
+  },
+  onBackEdit() {
+    this.setData({
+      preview: 0
+    })
+    
+  },
+  
+  onTapSubmit(event) {
+    wx.showLoading({
+      title: '预览数据准备中...',
+    })
+
+
+    qcloud.request({
+      url: config.service.addComment,
+      method: 'POST',
+      login: true,
+      data: {
+        movieId:this.data.movieId,
+        commentValue: this.data.commentValue,
+        type:this.data.commentType,
+      },
+      success: result => {
+        wx.hideLoading()
+
+        let data = result.data
+
+        if (data.code) {
+          wx.showToast({
+            icon: 'none',
+            title: '添加评论成功'
+          })
+        }
+        let dest = event.currentTarget.dataset.dest
+        wx.navigateTo({
+          url: '/pages/comment_list/comment_list?dest=' + dest,
+        })
+      },
+      fail: result => {
+        wx.hideLoading()
+        console.log(result)
+        wx.showToast({
+          icon: 'none',
+          title: '添加评论失败'
+        })
+      }
+    })
+  },
+  onInputValue(event){
+    this.setData({
+      commentValue: event.detail.value.trim()
+    })
+  }
 })

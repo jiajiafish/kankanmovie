@@ -31,7 +31,6 @@ INSERT INTO `movies` (`id`, `image`, `title`, `category`, `description`) VALUES
 CREATE TABLE `comment_fave` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `comment_id` int(11) NOT NULL,
-  `movie_id` int(11) NOT NULL,
   `open_id` varchar(255) NOT NULL,
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)

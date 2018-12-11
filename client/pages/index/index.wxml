@@ -1,14 +1,14 @@
 <view class='big-pic-wrapper'>
-  <image class='big-pic' src='/images/p1461851991.jpg'></image>
-  <view class='big-title'>机器人总动员</view>
+  <image class='big-pic' src='{{recmend.image}}'></image>
+  <view class='big-title'>{{recmend.title}}</view>
   <view class='recommend'>
 
-    <image class='avatar' src='/images/avatar1.jpg'></image><view class='text h2'>林志玲给你推荐了一部电影</view>
+    <image class='avatar' src='{{recmend.avatar}}'></image><view class='text h2'>{{recmend.username}}给你推荐了一部电影</view>
   </view>
 </view>
 
 <view class='button-wrapper'>
-  <navigator class='button-with-icon' url="/pages/movie-list/movie-list">
+  <navigator class='button-with-icon' url="/pages/hot/hot">
     <image src="/images/zan.png"></image>
     <text>热门</text>
   </navigator>

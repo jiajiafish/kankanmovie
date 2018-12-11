@@ -22,9 +22,13 @@
       <navigator class='button-with-icon' url="/pages/comment_list/comment_list?dest={{movie.id}}">
         <text>查看影评</text>
       </navigator>
-      <navigator class='button-with-icon' url="/pages/comment_edit/comment_edit?dest={{movie.id}}">
+      <view class='button-with-icon' bindtap='onTapAction' data-dest="{{movie.id}}">
         <text>添加影评</text>
-      </navigator>
+      </view>
+      <!-- <view class='button-with-icon' bindtap='tapTest'>
+      tapTesttapTest
+        <text>添加影评</text> -->
+      <!-- </view> -->
     </view>
   </view>
 </view>
