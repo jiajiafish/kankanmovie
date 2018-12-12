@@ -11,7 +11,7 @@
 <view class='container' wx:else>
   <view class='shoucang'>收藏的影评</view>
 
-  <view class='comment-card' wx:for='{{myFav}}'  wx:for-item="item">
+  <navigator class='comment-card' wx:for='{{myFav}}'  wx:for-item="item" url="/pages/comment_detail/comment_detail?dest={{item.id}}">
     <view class='comment-left'></view>
     <image class='left-pic' src='{{item.image}}'></image>
     <view class='comment-right'>
@@ -25,10 +25,10 @@
       </view>
 
     </view>
-  </view>
+  </navigator>
 
   <view class='shoucang' >发布的影评</view>
-  <view class='comment-card' wx:for='{{myCom}}'  wx:for-item="item">
+  <navigator class='comment-card' wx:for='{{myCom}}'  wx:for-item="item" url="/pages/comment_detail/comment_detail?dest={{item.id}}">
     <view class='comment-left'></view>
     <image class='left-pic' src='{{item.image}}'></image>
     <view class='comment-right'>
@@ -42,7 +42,7 @@
       </view>
 
     </view>
-  </view>
+  </navigator>
 
 
 

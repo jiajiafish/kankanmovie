@@ -1,11 +1,11 @@
-<view class='big-pic-wrapper'>
+<navigator class='big-pic-wrapper' url="/pages/detail/detail?dest={{recmend.id}}">
   <image class='big-pic' src='{{recmend.image}}'></image>
   <view class='big-title'>{{recmend.title}}</view>
   <view class='recommend'>
 
     <image class='avatar' src='{{recmend.avatar}}'></image><view class='text h2'>{{recmend.username}}给你推荐了一部电影</view>
   </view>
-</view>
+</navigator>
 
 <view class='button-wrapper'>
   <navigator class='button-with-icon' url="/pages/hot/hot">
@@ -18,5 +18,3 @@
     <text>我的</text>
   </navigator>
 </view>
-
-

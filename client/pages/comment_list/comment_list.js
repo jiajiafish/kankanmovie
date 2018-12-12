@@ -16,6 +16,9 @@ Page({
    */
   onLoad: function (options) {
     this.getComments(options.dest)
+    this.setData({
+      commentId: options.dest
+    })
   },
 
   /**
@@ -50,7 +53,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.getComments(this.data.commentId)
   },
 
   /**
