@@ -21,3 +21,6 @@
   font-size: 30rpx;
   margin:25rpx 35rpx;
 }
+.comment text{
+  text-align: center;
+}

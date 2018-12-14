@@ -7,7 +7,6 @@
     "pages/comment_list/comment_list",
     "pages/comment_detail/comment_detail",
     "pages/comment_edit/comment_edit",
-    "pages/comment_preview/comment_preview",
     "pages/user/user"
 
   ],

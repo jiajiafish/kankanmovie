@@ -14,7 +14,7 @@ const CONF = {
   qcloudAppId: '1256096797', 
   qcloudSecretId: 'AKIDQhrpOmzmcIoHZatO2e9Ufzm2DOhqvkSY', 
   qcloudSecretKey: '4zhJqCOdNZfcO1WvFNF1e5eIlNrUCz93',
-
+  mimetypes: ['audio/x-aac', 'audio/mpeg', 'video/webm', 'audio/mpeg', 'audio/mp3', 'audio/m4a'],
     /**
      * MySQL 配置，用来存储 session 和用户信息
      * 若使用了腾讯云微信小程序解决方案

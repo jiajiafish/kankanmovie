@@ -1,5 +1,7 @@
 // client/pages/hot/hot.js
-const qcloud = require('../../vendor/wafer2-client-sdk/index.js')
+const qcloud = require('../../vendor/wafer2-client-sdk/index')
+const config = require('../../config')
+const app = getApp()
 Page({
 
   /**
@@ -21,7 +23,7 @@ Page({
       title: '电影数据加载中。。。',
     })
     qcloud.request({
-      url: 'https://bsfs9n5c.qcloud.la/weapp/movies',
+      url: config.service.gethotlist,
       success: response => {
         wx.hideLoading()
         console.log(response.data.data)
@@ -53,51 +55,11 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
     this.getMovieList()
+    wx.stopPullDownRefresh()
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

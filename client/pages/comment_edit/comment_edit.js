@@ -2,6 +2,8 @@
 const qcloud = require('../../vendor/wafer2-client-sdk/index')
 const config = require('../../config')
 const app = getApp()
+const recorderManager = wx.getRecorderManager()
+const innerAudioContext = wx.createInnerAudioContext()
 Page({
 
   /**
@@ -10,18 +12,17 @@ Page({
   data: {
     userInfo: null,
     locationAuthType: app.data.locationAuthType,
-    commentValue : "",
+    commentValue: "",
     preview: 0,
+    record: 0
 
   },
-  onUserInfo:function(){
+  onUserInfo: function () {
     console.log(this.data.userInfo)
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
   onLoad: function (options) {
 
     this.getMovie(options.dest)
@@ -29,14 +30,61 @@ Page({
       movieId: options.dest,
       commentType: options.type
     })
+    recorderManager.onStart(() => {
+      console.log('recorder start')
+    })
+
+    recorderManager.onStop((res) => {
+      console.log('recorder stop', res)
+      this.setData({
+        src: res.tempFilePath 
+      })
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  tip: function (msg) {
+    wx.showModal({
+      title: '提示',
+      content: msg,
+      showCancel: false
+    })
   },
+
+  startRecordMp3: function () {
+    recorderManager.start({
+      duration: 10000,
+      sampleRate: 44100,
+      numberOfChannels: 1,
+      encodeBitRate: 192000,
+      format: 'mp3',
+      frameSize: 50
+    });
+    this.setData({
+      record: 1
+    })
+  },
+
+  stopRecord: function () {
+    recorderManager.stop()
+    this.setData({
+      record: 0
+    })
+  },
+
+  playRecord: function () {
+    console.log(this.data.src)
+    var src = this.data.src;
+    if (src == '') {
+      this.tip("请先录音！")
+      return;
+    }
+    innerAudioContext.src = src;
+    innerAudioContext.play();
+    this.setData({
+      record: 1
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面显示
@@ -63,33 +111,6 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
   getMovie(id) {
     wx.showLoading({
       title: '电影数据加载中...',
@@ -135,32 +156,65 @@ Page({
       }
     })
   },
-  onTapPreview(){
+  onTapPreview() {
     this.setData({
-      preview:1
+      preview: 1
     })
   },
   onBackEdit() {
     this.setData({
-      preview: 0
+      preview: 0,
+      record: 0,
+      commentValue:this.data.commentValue
     })
-    
+
   },
-  
+  onShow: function () {
+    // 同步授权状态
+    this.setData({
+      locationAuthType: app.data.locationAuthType
+    })
+    app.checkSession({
+      success: ({ userInfo }) => {
+        console.log(userInfo)
+        this.setData({
+          userInfo
+        })
+      }
+    })
+  },
+
   onTapSubmit(event) {
     wx.showLoading({
       title: '预览数据准备中...',
     })
 
-
+    console.log(this.data.commentType)
+    if (this.data.commentType=1) {
+      wx.uploadFile({
+        url: config.service.uploadUrl,
+        filePath: this.data.src,
+        name: 'file',
+        success: res => {
+          console.log(res)
+          let data = JSON.parse(res.data)
+          this.setData({
+            commentValue:data
+          })
+        },
+        fail: () => {
+          length--
+        }
+      })
+    }
     qcloud.request({
       url: config.service.addComment,
       method: 'POST',
       login: true,
       data: {
-        movieId:this.data.movieId,
+        movieId: this.data.movieId,
         commentValue: this.data.commentValue,
-        type:this.data.commentType,
+        type: this.data.commentType,
       },
       success: result => {
         wx.hideLoading()
@@ -188,7 +242,7 @@ Page({
       }
     })
   },
-  onInputValue(event){
+  onInputValue(event) {
     this.setData({
       commentValue: event.detail.value.trim()
     })

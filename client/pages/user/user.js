@@ -2,8 +2,8 @@
 const qcloud = require('../../vendor/wafer2-client-sdk/index')
 const config = require('../../config')
 const app = getApp()
-Page({
 
+Page({
   /**
    * 页面的初始数据
    */
@@ -11,7 +11,6 @@ Page({
     userInfo: null,
     locationAuthType: app.data.locationAuthType
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -19,19 +18,12 @@ Page({
     this.getComList()
     this.getFavList()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
   getComList() {
     wx.showLoading({
       title: '个人数据加载中。。。',
     })
     qcloud.request({
-      url: 'https://bsfs9n5c.qcloud.la/weapp/mycom',
+      url: config.service.mycom,
       login: true,
       success: response => {
         wx.hideLoading()
@@ -61,7 +53,7 @@ Page({
       title: '个人数据加载中。。。',
     })
     qcloud.request({
-      url: 'https://bsfs9n5c.qcloud.la/weapp/myfav',
+      url:  config.service.myfav,
       login: true,
       success: response => {
         wx.hideLoading()
@@ -103,19 +95,6 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -123,21 +102,12 @@ Page({
   onPullDownRefresh: function () {
     this.getComList()
     this.getFavList()
+    wx.stopPullDownRefresh()
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
 
-  },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
-  },
   onTapLogin: function () {
     app.login({
       success: ({ userInfo }) => {

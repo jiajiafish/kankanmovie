@@ -67,6 +67,9 @@
   height: 60rpx;
   box-shadow: 0 2rpx 13rpx 5rpx rgba(0, 0, 0, 0.03);
 }
+.button-with-icon text{
+  margin: 3rpx 14rpx;
+}
 
 .comment-wrapper{
   margin-bottom: 30rpx;
@@ -82,6 +85,7 @@
   font-size: 30rpx;
   margin:25rpx 35rpx;
 }
+
 .card-desc{
   min-height: 300rpx;
 }
@@ -98,7 +102,6 @@
   box-shadow: 0 2rpx 13rpx 5rpx rgba(0, 0, 0, 0.03);
 
 }
-
 
 .button-with-icon-bottom{
   margin:20rpx auto; 

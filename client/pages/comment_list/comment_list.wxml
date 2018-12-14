@@ -1,11 +1,12 @@
-<!--client/pages/comment_list/comment_list.wxml-->
-<view class='comment-card' data-dest="{{item.id}}" bindtap='onTapComment'  wx:for='{{comments}}' wx:for-item="item">
+<!-- client/pages/comment_list/comment_list.wxml -->
+<view class='comment-card' data-dest="{{item.id}}" bindtap='onTapComment' wx:for='{{comments}}' wx:for-item="item">
   <view class='comment-wrapper'>
     <image class='avatar' src='{{item.avatar}}'></image>
     <view class='name'>{{item.username}}</view>
   </view>
-  <view class='comment h2'>
-    {{item.content}}
+  <view class='comment h2' wx:if="{{!item.comment_type}}">{{item.content}}</view>
+  <view class='comment h2' wx:if="{{item.comment_type}}">
+    <text>播放</text>
   </view>
 </view>
 <view class='comment-card' wx:if="{{!comments.length}}">
@@ -13,8 +14,5 @@
     <image class='avatar' src='/images/avatar1.jpg'></image>
     <view class='name'>期待你的评论</view>
   </view>
-  <view class='comment h2'>
-暂时没有评论快来添加你的评论
-  </view>
+  <view class='comment h2'>暂时没有评论快来添加你的评论</view>
 </view>
-

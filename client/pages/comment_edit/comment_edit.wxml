@@ -1,9 +1,13 @@
-<!--client/pages/comment_edit/comment_edit.wxml-->
+<!-- client/pages/comment_edit/comment_edit.wxml -->
 <view class='container' wx:if="{{!userInfo}}">
   <image class='avatar login-avatar' src='/images/wenhao.jpg'></image>
   <view class='login-button'>
-    <button wx:if="{{locationAuthType==0}}" open-type='getUserInfo' bindgetuserinfo='onTapLogin'>微信登录</button>
-    <button wx:if="{{locationAuthType==1}}" open-type='openSetting' bindopensetting="onTapLogin">授权登录</button>
+    <button wx:if="{{locationAuthType==0}}" open-type='getUserInfo' bindgetuserinfo='onTapLogin'>
+      微信登录
+    </button>
+    <button wx:if="{{locationAuthType==1}}" open-type='openSetting' bindopensetting="onTapLogin">
+      授权登录
+    </button>
   </view>
 </view>
 <view wx:else>
@@ -13,9 +17,7 @@
         <image class='detail-img' src="{{movie.image}}"></image>
       </view>
       <view class='card-text-wrapper'>
-        <view class='card-title h1'>
-          {{movie.title}}
-        </view>
+        <view class='card-title h1'>{{movie.title}}</view>
         <view class='comment-wrapper'>
           <!-- <image class='avatar' src='/images/avatar1.jpg'></image> -->
           <!-- <view class='name'>倔强的二文鱼的影评</view> -->
@@ -23,17 +25,17 @@
         <!-- <view class='card-desc h2'>
 
       </view> -->
-        <textarea wx:if="{{commentType==0}}" class="detailText" placeholder-style='h2' bindinput='onInputValue' placeholder="输入你的影评">
-        </textarea>
+        <textarea wx:if="{{commentType==0}}" class="detailText" value="{{commentValue}}" placeholder-style='h2' bindinput='onInputValue' placeholder="输入你的影评"></textarea>
       </view>
-
       <view class='button-wrapper' wx:if="{{commentType==1}}">
-        <navigator class='button-with-icon' url="/pages/movie-list/movie-list">
+        <view class='button-with-icon' bindtap='startRecordMp3' wx:if="{{record==0}}">
           <!-- <image src="/images/zan.png"></image> -->
-          <text>录音</text>
-        </navigator>
-
-
+          <text>开始录音</text>
+        </view>
+        <view class='button-with-icon' bindtap='stopRecord' wx:if="{{record==1}}">
+          <!-- <image src="/images/zan.png"></image> -->
+          <text>停止录音</text>
+        </view>
       </view>
     </view>
     <view class='button-wrapper-bottom' bindtap='onTapPreview'>
@@ -48,22 +50,25 @@
         <image class='detail-img' src="{{movie.image}}"></image>
       </view>
       <view class='card-text-wrapper'>
-        <view class='card-title h1'>
-          {{movie.title}}
-        </view>
+        <view class='card-title h1'>{{movie.title}}</view>
         <view class='comment-wrapper'>
           <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
           <view class='name'>{{userInfo.nickName}}的影评</view>
         </view>
-        <view class='comment-content-wrapper'>
+        <view class='comment-content-wrapper' >
           <view class='comment-blank'>
             <image src='/images/yinhao.png'></image>
           </view>
-          <view class='comment-contents h2'>{{commentValue}}</view>
+          <view class='comment-contents h2' wx:if="{{commentType==0}}">{{commentValue}}</view>
+          <view class='comment-contents' wx:if="{{commentType==1}}">
+                  <view class='button-with-icon' bindtap='playRecord'>
+          <!-- <image src="/images/zan.png"></image> -->
+          <text>播放录音</text>
+        </view>
+          </view>
         </view>
       </view>
-
-      <view class='button-wrapper' >
+      <view class='button-wrapper'>
         <view class='button-with-icon' bindtap='onBackEdit'>
           <!-- <image src="/images/zan.png"></image> -->
           <text>重新编辑</text>

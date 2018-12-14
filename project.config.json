@@ -8,6 +8,7 @@
 	},
 	"appid": "wxa62595205027f2d4",
 	"projectname": "kankanmovie",
+	"libVersion": "2.4.2",
 	"condition": {
 		"search": {
 			"current": -1,
