@@ -30,6 +30,13 @@ module.exports = {
     // content 可以是字符也有可能是存储播放音频 type0代表字符，type1代表音频的地址
     await DB.query('INSERT INTO movie_comment( movie_id, comment_type, user, username, avatar, content) VALUES (?, ?, ?, ?, ?, ?)', [comment.movieId, comment.type, user, nickName, avatarUrl, comment.commentValue])
   },
+  myMovieCom: async ctx => {
+    let user = ctx.state.$wxInfo.userinfo.openId
+    let comment = ctx.request.body
+    // content 可以是字符也有可能是存储播放音频 type0代表字符，type1代表音频的地址
+    
+    ctx.state.data = await DB.query('SELECT co.id, co.avatar, co.username, co.content  FROM movie_comment AS co  WHERE co.user = ? AND co.movie_id=?', [user,comment.movieId])
+  },
   mycom: async ctx => {
     let user = ctx.state.$wxInfo.userinfo.openId
     // content 可以是字符也有可能是存储播放音频 type0代表字符，type1代表音频的地址

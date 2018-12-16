@@ -11,10 +11,9 @@ const CONF = {
     // 是否使用腾讯云代理登录小程序
     useQcloudLogin: false,
 
-  qcloudAppId: '1256096797', 
-  qcloudSecretId: 'AKIDQhrpOmzmcIoHZatO2e9Ufzm2DOhqvkSY', 
-  qcloudSecretKey: '4zhJqCOdNZfcO1WvFNF1e5eIlNrUCz93',
-  mimetypes: ['audio/x-aac', 'audio/mpeg', 'video/webm', 'audio/mpeg', 'audio/mp3', 'audio/m4a'],
+  qcloudAppId: '1258221737', 
+  qcloudSecretId: 'AKIDh096PXFM4bXyFuumy1vumYBh3EE3aCUb', 
+  qcloudSecretKey: '44vb5OWT0NzQjsptpdFgyPhshK6kDVgg',
     /**
      * MySQL 配置，用来存储 session 和用户信息
      * 若使用了腾讯云微信小程序解决方案
@@ -34,11 +33,14 @@ const CONF = {
          * 地区简称
          * @查看 https://cloud.tencent.com/document/product/436/6224
          */
-        region: 'ap-guangzhou',
+        region: 'ap-shanghai',
         // Bucket 名称
-        fileBucket: 'qcloudtest',
+      // fileBucket: 'kankan1205-1258221737',
+        fileBucket: 'kankan1205',
         // 文件夹
-        uploadFolder: ''
+        uploadFolder: '',
+  mimetypes: ['audio/x-aac', 'audio/mpeg', 'video/webm', 'audio/mpeg', 'audio/mp3', 'audio/m4a'],
+
     },
 
     // 微信登录态有效期

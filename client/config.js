@@ -41,6 +41,7 @@ var config = {
     addFav: `${host}/weapp/addcfav`,
     mycom: `${host}/weapp/mycom`,
     myfav: `${host}/weapp/myfav`,
+    mymoviecom:`${host}/weapp/mymoviecom`,
 
 
 

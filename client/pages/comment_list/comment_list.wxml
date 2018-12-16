@@ -6,7 +6,7 @@
   </view>
   <view class='comment h2' wx:if="{{!item.comment_type}}">{{item.content}}</view>
   <view class='comment h2' wx:if="{{item.comment_type}}">
-    <text>播放</text>
+    <text class='play'>播放</text>
   </view>
 </view>
 <view class='comment-card' wx:if="{{!comments.length}}">

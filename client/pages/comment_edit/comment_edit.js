@@ -188,25 +188,40 @@ Page({
     wx.showLoading({
       title: '预览数据准备中...',
     })
+    let dest = event.currentTarget.dataset.dest
+    console.log(dest)
+    if (this.data.commentType==1) {
+      console.log("000")
+      console.log(this.data.src)
 
-    console.log(this.data.commentType)
-    if (this.data.commentType=1) {
       wx.uploadFile({
         url: config.service.uploadUrl,
         filePath: this.data.src,
         name: 'file',
         success: res => {
+
           console.log(res)
-          let data = JSON.parse(res.data)
+          console.log("success")
+          let data = JSON.parse(res.data).data.imgUrl
+          console.log(data)
           this.setData({
             commentValue:data
           })
+          console.log("commentValue",this.data.commentValue)
+          this.postDb(dest)
+
         },
-        fail: () => {
-          length--
+        fail: res => {
+          console.log("fail")
+
+          console.log(res)
         }
       })
+    }else{
+      this.postDb(dest)
     }
+  },
+  postDb(dest){
     qcloud.request({
       url: config.service.addComment,
       method: 'POST',
@@ -227,7 +242,7 @@ Page({
             title: '添加评论成功'
           })
         }
-        let dest = event.currentTarget.dataset.dest
+        console.log(dest)
         wx.navigateTo({
           url: '/pages/comment_list/comment_list?dest=' + dest,
         })

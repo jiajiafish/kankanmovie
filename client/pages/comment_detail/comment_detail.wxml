@@ -12,8 +12,11 @@
         <image class='avatar' src='{{comment.avatar}}'></image>
         <view class='name'>{{comment.username}}的影评</view>
       </view>
-      <view class='card-desc h2'>
+      <view class='card-desc h2'wx:if="{{!comment.comment_type}}">
         {{comment.content}}
+      </view>
+      <view class='card-desc h2'wx:if="{{comment.comment_type}}">
+        <text class='play' bindtap="OnTapAudio">播放</text>
       </view>
     </view>
 

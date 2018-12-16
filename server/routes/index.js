@@ -50,5 +50,5 @@ router.get('/rand', controllers.comment.rand)
 
 router.get('/mycom', validationMiddleware, controllers.comment.mycom)
 router.get('/myfav', validationMiddleware, controllers.comment.myfav)
-
+router.post('/mymoviecom', validationMiddleware, controllers.comment.myMovieCom)
 module.exports = router

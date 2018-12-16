@@ -88,22 +88,55 @@ Page({
   },
 
 
-  onTapAction:function(event){
-    console.log(event.currentTarget.dataset.dest)
+// 按照老师要求改的
+  onTapAction: function (event) {
     let dest = event.currentTarget.dataset.dest
-    wx.showActionSheet({
-      itemList: ['文字', '音频'],
-      success(res) {
-        console.log(res.tapIndex)
-        // 这个需要发个post到后台
-        wx.navigateTo({
-          url: '/pages/comment_edit/comment_edit?dest=' + dest + "&type=" + res.tapIndex,
-        })
+
+    qcloud.request({
+      url: config.service.mymoviecom,
+      method: 'POST',
+      login: true,
+      data: {
+        movieId: dest,
+
       },
-      fail(res) {
-        console.log(res.errMsg)
+      success: result => {
+        wx.hideLoading()
+
+        let data = result.data
+        console.log(data)
+        console.log(data.data.length)
+        if (data.data.length>0) {
+          wx.navigateTo({
+            url: '/pages/comment_detail/comment_detail?dest=' + data.data[0].id,
+          })
+        }else{
+          wx.showActionSheet({
+            itemList: ['文字', '音频'],
+            success(res) {
+              console.log(res.tapIndex)
+              wx.navigateTo({
+                url: '/pages/comment_edit/comment_edit?dest=' + dest + "&type=" + res.tapIndex,
+              })
+            },
+            fail(res) {
+              console.log(res.errMsg)
+            }
+          })
+        }
+
+      },
+      fail: result => {
+        wx.hideLoading()
+        console.log(result)
+        wx.showToast({
+          icon: 'none',
+          title: '添加评论失败'
+        })
       }
     })
+
+
   },
   
 

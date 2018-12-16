@@ -1,12 +1,21 @@
-<navigator class='big-pic-wrapper' url="/pages/detail/detail?dest={{recmend.id}}">
-  <image class='big-pic' src='{{recmend.image}}'></image>
+<navigator wx:if="{{recmend.id}}" class='big-pic-wrapper' url="/pages/detail/detail?dest={{recmend.id}}">
+  <image  class='big-pic' src='{{recmend.image}}'></image>
+
   <view class='big-title'>{{recmend.title}}</view>
   <view class='recommend'>
 
-    <image class='avatar' src='{{recmend.avatar}}'></image><view class='text h2'>{{recmend.username}}给你推荐了一部电影</view>
+    <image class='avatar' src='{{recmend.avatar}}'></image><view class='text h2' >{{recmend.username}}给你推荐了一部电影</view>
   </view>
 </navigator>
+<view wx:if="{{!recmend.id}}" class='big-pic-wrapper'>
+  <image  class='big-pic' src='/images/p449619623.jpg'></image>
 
+  <view class='big-title'>快速抢沙发！！</view>
+  <view class='recommend'>
+
+    <view class='text h2' >没有课推荐电影哦，快去写影评把！！</view>
+  </view>
+</view>
 <view class='button-wrapper'>
   <navigator class='button-with-icon' url="/pages/hot/hot">
     <image src="/images/zan.png"></image>
