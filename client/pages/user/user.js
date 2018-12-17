@@ -93,6 +93,8 @@ Page({
         })
       }
     })
+    this.getComList()
+    this.getFavList()
   },
 
 

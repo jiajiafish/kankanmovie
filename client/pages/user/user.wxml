@@ -1,56 +1,51 @@
-<!--client/pages/user/user.wxml-->
+<!-- client/pages/user/user.wxml -->
 <view class='container' wx:if="{{!userInfo}}">
-
   <image class='avatar login-avatar' src='/images/wenhao.jpg'></image>
   <view class='login-button'>
-    <button wx:if="{{locationAuthType==0}}" open-type='getUserInfo' bindgetuserinfo='onTapLogin'>微信登录</button>
-    <button wx:if="{{locationAuthType==1}}" open-type='openSetting' bindopensetting="onTapLogin">授权登录</button>
+    <button wx:if="{{locationAuthType==0}}" open-type='getUserInfo' bindgetuserinfo='onTapLogin'>
+      微信登录
+    </button>
+    <button wx:if="{{locationAuthType==1}}" open-type='openSetting' bindopensetting="onTapLogin">
+      授权登录
+    </button>
   </view>
-
 </view>
 <view class='container' wx:else>
   <view class='shoucang'>收藏的影评</view>
-
-  <navigator class='comment-card' wx:for='{{myFav}}'  wx:for-item="item" url="/pages/comment_detail/comment_detail?dest={{item.id}}">
+  <navigator class='comment-card' wx:for='{{myFav}}' wx:for-item="item" url="/pages/comment_detail/comment_detail?dest={{item.id}}">
     <view class='comment-left'></view>
     <image class='left-pic' src='{{item.image}}'></image>
     <view class='comment-right'>
       <view class='commen-title h1'>{{item.title}}</view>
-      <view class='comment h2'>
-        {{item.content}}
+      <view class='comment h2' wx:if="{{!item.comment_type}}">{{item.content}}</view>
+      <view class='comment h2' wx:if="{{item.comment_type}}">
+        <text class='play'>播放</text>
       </view>
       <view class='comment-wrapper'>
         <image class='avatar' src='{{item.avatar}}'></image>
         <view class='name'>{{item.username}}</view>
       </view>
-
     </view>
   </navigator>
-
-  <view class='shoucang' >发布的影评</view>
-  <navigator class='comment-card' wx:for='{{myCom}}'  wx:for-item="item" url="/pages/comment_detail/comment_detail?dest={{item.id}}">
+  <view class='shoucang'>发布的影评</view>
+  <navigator class='comment-card' wx:for='{{myCom}}' wx:for-item="item" url="/pages/comment_detail/comment_detail?dest={{item.id}}">
     <view class='comment-left'></view>
     <image class='left-pic' src='{{item.image}}'></image>
     <view class='comment-right'>
       <view class='commen-title h1'>{{item.title}}</view>
-      <view class='comment h2'>
-        {{item.content}}
+      <view class='comment h2' wx:if="{{!item.comment_type}}">{{item.content}}</view>
+      <view class='comment h2' wx:if="{{item.comment_type}}">
+        <text class='play'>播放</text>
       </view>
       <view class='comment-wrapper'>
         <image class='avatar' src='{{item.avatar}}'></image>
         <view class='name'>{{item.username}}</view>
       </view>
-
     </view>
   </navigator>
-
-
-
 </view>
-
 <view class='button-wrapper-bottom'>
   <navigator class='button-with-icon-bottom' url="/pages/index/index">
     <text>回到首页</text>
   </navigator>
-
 </view>

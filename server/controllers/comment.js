@@ -19,8 +19,12 @@ module.exports = {
     }
   },
   rand: async ctx => {
-
-    ctx.state.data = (await DB.query("Select * From movie_comment left JOIN movies ON movie_comment.movie_id = movies.id order By Rand() Limit 1"))[0]
+    let list = await DB.query("Select * From movie_comment left JOIN movies ON movie_comment.movie_id = movies.id order By Rand() Limit 1")
+    if (list.length<1) {
+      ctx.state.data = (await DB.query("SELECT * FROM movies order By Rand() Limit 1"))[0]
+    }else{
+      ctx.state.data = list[0]
+    }
   },
   add: async ctx => {
     let user = ctx.state.$wxInfo.userinfo.openId
@@ -40,12 +44,12 @@ module.exports = {
   mycom: async ctx => {
     let user = ctx.state.$wxInfo.userinfo.openId
     // content 可以是字符也有可能是存储播放音频 type0代表字符，type1代表音频的地址
-    ctx.state.data = await DB.query('SELECT co.id, co.avatar, co.username, co.content, mo.title, mo.image FROM `movie_comment` AS co LEFT JOIN `movies` as mo ON co.movie_id = mo.id WHERE co.user = ?', [user])
+    ctx.state.data = await DB.query('SELECT co.id, co.avatar, co.username, co.content, mo.title, mo.image,co.comment_type FROM `movie_comment` AS co LEFT JOIN `movies` as mo ON co.movie_id = mo.id WHERE co.user = ?', [user])
   },
   myfav: async ctx => {
     let user = ctx.state.$wxInfo.userinfo.openId
     // content 可以是字符也有可能是存储播放音频 type0代表字符，type1代表音频的地址
-    ctx.state.data = await DB.query('SELECT co.id, co.avatar, co.username, co.content, mo.title, mo.image FROM`movie_comment` as co left join`movies` as mo on co.movie_id = mo.id left join`comment_fave` as fa on fa.comment_id = co.id where fa.open_id = ?', [user])
+    ctx.state.data = await DB.query('SELECT co.id, co.avatar, co.username, co.content, mo.title, mo.image,co.comment_type FROM`movie_comment` as co left join`movies` as mo on co.movie_id = mo.id left join`comment_fave` as fa on fa.comment_id = co.id where fa.open_id = ?', [user])
   },
   fav: async ctx => {
     let user = ctx.state.$wxInfo.userinfo.openId
